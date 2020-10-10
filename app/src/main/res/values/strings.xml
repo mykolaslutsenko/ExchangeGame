@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BlackBox</string>
+    <string name="buy">BUY</string>
+    <string name="sell">SELL</string>
+    <string name="start">START</string>
+    <string name="easy">EASY</string>
+    <string name="medium">MEDIUM</string>
+    <string name="hard">HARD</string>
+    <string name="try_again">TRY AGAIN</string>
+    <string name="about_game">This is an exchange game. You can sell and buy things and make money on it.</string>
+</resources>

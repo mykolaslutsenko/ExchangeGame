@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.slutsenko.blackbox.GameViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        android:padding="@dimen/offset_16">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_regular"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/offset_16">
+
+            <TextView
+                style="@style/text_with_icon"
+                android:gravity="end"
+                android:text="@{vm.numberOfActionLiveData.toString()}"
+                app:drawableStartCompat="@drawable/ic_flag" />
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="0dp"
+                />
+
+            <TextView
+                style="@style/text_with_icon"
+                android:gravity="start"
+                android:text="@{`/`+ vm.numberOfActionToWinLiveData.toString()}"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/euro"
+                style="@style/text_with_icon"
+                android:gravity="end"
+                android:text="@{vm.moneyLiveData.toString()}"
+                app:drawableStartCompat="@drawable/ic_euro" />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="0dp"
+                />
+
+            <TextView
+                style="@style/text_with_icon"
+                android:textSize="16sp"
+                android:gravity="start"
+                android:text="@{`/`+ vm.moneyToWinLiveData.toString()}" />
+
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/bg_regular"
+            android:orientation="horizontal"
+            android:padding="@dimen/offset_16">
+
+
+            <TextView
+                style="@style/text_with_icon"
+                android:text="@{vm.shipLiveData}"
+                app:drawableStartCompat="@drawable/ic_anchor" />
+
+            <TextView
+                style="@style/text_with_icon"
+                android:text="@={vm.carLiveData}"
+                app:drawableStartCompat="@drawable/ic_car" />
+
+            <TextView
+                style="@style/text_with_icon"
+                android:text="@{vm.planeLiveData}"
+                app:drawableStartCompat="@drawable/ic_plane" />
+
+
+            <TextView
+                style="@style/text_with_icon"
+                android:text="@{vm.bikeLiveData}"
+                app:drawableStartCompat="@drawable/ic_bike" />
+
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_regular"
+            android:orientation="horizontal"
+            android:padding="@dimen/offset_16">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+
+                    android:src="@drawable/ic_anchor" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_car" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_plane" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_bike" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@string/buy" />
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.shipBuyRateLiveData.toString()}" />
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.carBuyRateLiveData.toString()}" />
+
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.planeBuyRateLiveData.toString()}" />
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.bikeBuyRateLiveData.toString()}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@string/sell" />
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.shipSellRateLiveData.toString()}" />
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.carSellRateLiveData.toString()}" />
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.planeSellRateLiveData.toString()}" />
+
+                <TextView
+                    style="@style/rate_text"
+                    android:text="@{vm.bikeSellRateLiveData.toString()}" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_light"
+            android:orientation="horizontal"
+            android:padding="@dimen/offset_16">
+
+            <RadioGroup
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/offset_16"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_ship"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:buttonTint="@color/colorAccent"
+                    android:checked="true"
+                    android:drawableEnd="@drawable/ic_anchor"
+                    android:onClick="@{()-> vm.setRadioButtonValue(1)}" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorAccent"
+                    android:drawableEnd="@drawable/ic_car"
+                    android:onClick="@{()-> vm.setRadioButtonValue(2)}" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_plane"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorAccent"
+                    android:drawableEnd="@drawable/ic_plane"
+                    android:onClick="@{()-> vm.setRadioButtonValue(3)}" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_bike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorAccent"
+                    android:drawableEnd="@drawable/ic_bike"
+                    android:onClick="@{()-> vm.setRadioButtonValue(4)}" />
+
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_light"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="@dimen/offset_48"
+                android:layout_height="@dimen/offset_48"
+                android:onClick="@{()-> vm.onClickMinus()}"
+                android:src="@drawable/ic_min" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/offset_32"
+                android:text="@={vm.quantityLiveData}"
+                android:textColor="@color/colorAccent"
+                android:textSize="32sp" />
+
+            <ImageView
+                android:layout_width="@dimen/offset_48"
+                android:layout_height="@dimen/offset_48"
+                android:onClick="@{()-> vm.onClickPlus()}"
+                android:src="@drawable/ic_add" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/offset_48"
+                android:layout_weight="1"
+                android:background="@drawable/button_regular"
+                android:onClick="@{()-> vm.onClickBuy()}"
+                android:text="@string/buy"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="@dimen/offset_16"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/offset_48"
+                android:layout_weight="1"
+                android:background="@drawable/button_regular"
+                android:onClick="@{()-> vm.onClickSell()}"
+                android:text="@string/sell"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    android:padding="@dimen/offset_24"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/rate_text"
+        android:textSize="40sp"
+        android:id="@+id/txt_result"
+        android:layout_gravity="center"
+        android:padding="@dimen/offset_16"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/offset_16"
+        android:background="@drawable/bg_light"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <Button
+        android:onClick="tryAgain"
+        android:text="@string/try_again"
+        style="@style/btn_style" />
+
+</LinearLayout>
