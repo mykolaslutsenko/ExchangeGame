@@ -38,10 +38,10 @@ class GameViewModel : ViewModel() {
 
 
     private fun setRate() {
-        carBuyRateLiveData.value = Random.nextInt(600, 1000)
+        carBuyRateLiveData.value = Random.nextInt(300, 700)
         planeBuyRateLiveData.value = Random.nextInt(600, 1000)
-        shipBuyRateLiveData.value = Random.nextInt(700, 1000)
-        bikeBuyRateLiveData.value = Random.nextInt(600, 1000)
+        shipBuyRateLiveData.value = Random.nextInt(700, 1200)
+        bikeBuyRateLiveData.value = Random.nextInt(200, 400)
 
         minusOneAction()
     }
@@ -61,118 +61,66 @@ class GameViewModel : ViewModel() {
 
 
     fun onClickBuy() {
-        var currentPrice = 0
         when (radioButtonLiveData.value) {
             Thing.SHIP -> {
-                currentPrice =
-                    quantityLiveData.value?.times(shipBuyRateLiveData.value!!)!!
-                if (moneyLiveData.value?.minus(currentPrice)!! > 0) {
-                    setRate()
-                    shipLiveData.value = shipLiveData.value?.plus(quantityLiveData.value ?: 0)
-                    moneyLiveData.value =
-                        moneyLiveData.value?.minus(currentPrice)
-                } else {
-                    messageLiveData.value = "not enough money"
-                }
+                buyThing(shipLiveData, shipBuyRateLiveData)
             }
             Thing.CAR -> {
-                currentPrice =
-                    quantityLiveData.value?.times(carBuyRateLiveData.value!!)!!
-                if (moneyLiveData.value?.minus(currentPrice)!! > 0) {
-                    setRate()
-                    carLiveData.value = carLiveData.value?.plus(quantityLiveData.value ?: 0)
-                    moneyLiveData.value =
-                        moneyLiveData.value?.minus(currentPrice)
-                } else {
-                    messageLiveData.value = "not enough money"
-                }
-
-
+                buyThing(carLiveData, carBuyRateLiveData)
             }
             Thing.PLANE -> {
-                currentPrice =
-                    quantityLiveData.value?.times(planeBuyRateLiveData.value!!)!!
-                if (moneyLiveData.value?.minus(currentPrice)!! > 0) {
-                    setRate()
-                    planeLiveData.value = planeLiveData.value?.plus(quantityLiveData.value ?: 0)
-                    moneyLiveData.value =
-                        moneyLiveData.value?.minus(currentPrice)!!
-                } else {
-                    messageLiveData.value = "not enough money"
-                }
+                buyThing(planeLiveData, planeBuyRateLiveData)
             }
             Thing.BIKE -> {
-                currentPrice =
-                    quantityLiveData.value?.times(bikeBuyRateLiveData.value!!)!!
-                if (moneyLiveData.value?.minus(currentPrice)!! > 0) {
-                    setRate()
-                    bikeLiveData.value = bikeLiveData.value?.plus(quantityLiveData.value ?: 0)
-                    moneyLiveData.value =
-                       moneyLiveData.value?.minus(currentPrice)!!
-                } else {
-                    messageLiveData.value = "not enough money"
-                }
+                buyThing(bikeLiveData, bikeBuyRateLiveData)
             }
-
         }
-
     }
 
+    private fun buyThing(itemLiveData: MutableLiveData<Int>, buyRateLiveData: MutableLiveData<Int>) {
+        var currentPrice = 0
+        currentPrice = quantityLiveData.value?.times(buyRateLiveData.value!!)!!
+        if (moneyLiveData.value?.minus(currentPrice)!! > 0) {
+            setRate()
+            itemLiveData.value = itemLiveData.value?.plus(quantityLiveData.value ?: 0)
+            moneyLiveData.value =
+                moneyLiveData.value?.minus(currentPrice)
+        } else {
+            messageLiveData.value = "not enough money"
+        }
+    }
 
     fun onClickSell() {
-        var currentPrice = 0
         when (radioButtonLiveData.value) {
-
             Thing.SHIP -> {
-                if (shipLiveData.value!! >= quantityLiveData.value!!) {
-                    setRate()
-                    currentPrice =
-                        quantityLiveData.value?.times(shipSellRateLiveData.value!!)!!
-                    shipLiveData.value = shipLiveData.value?.minus(quantityLiveData.value !!)
-
-                } else {
-                    messageLiveData.value = "you don't have ${quantityLiveData.value} ships"
-                }
+                sellThing(shipLiveData, shipSellRateLiveData)
             }
             Thing.CAR -> {
-                if (carLiveData.value!! >= quantityLiveData.value!!) {
-                    setRate()
-                    currentPrice =
-                        quantityLiveData.value?.times(carSellRateLiveData.value!!)!!
-                    carLiveData.value = carLiveData.value?.minus(quantityLiveData.value !!)
-
-                } else {
-                    messageLiveData.value = "you don't have ${quantityLiveData.value} cars"
-                }
+                sellThing(carLiveData, carSellRateLiveData)
             }
             Thing.PLANE -> {
-                if (planeLiveData.value!! >= quantityLiveData.value!!) {
-                    setRate()
-                    currentPrice =
-                        quantityLiveData.value?.times(planeSellRateLiveData.value!!)!!
-                    planeLiveData.value = planeLiveData.value?.minus(quantityLiveData.value !!)
-
-                } else {
-                    messageLiveData.value = "you don't have ${quantityLiveData.value} planes"
-                }
+                sellThing(planeLiveData, planeSellRateLiveData)
             }
             Thing.BIKE -> {
-                if (bikeLiveData.value!! >= quantityLiveData.value!!) {
-                    setRate()
-                    currentPrice =
-                        quantityLiveData.value?.times(bikeSellRateLiveData.value!!)!!
-                    bikeLiveData.value = bikeLiveData.value?.minus(quantityLiveData.value !!)
-
-                } else {
-                    messageLiveData.value = "you don't have ${quantityLiveData.value} bikes"
-                }
+                sellThing(bikeLiveData, bikeSellRateLiveData)
             }
+        }
+    }
 
+    private fun sellThing(itemLiveData: MutableLiveData<Int>, sellRateLiveData: MutableLiveData<Int>) {
+        var currentPrice = 0
+        if (itemLiveData.value!! >= quantityLiveData.value!!) {
+            setRate()
+            currentPrice = quantityLiveData.value?.times(sellRateLiveData.value!!)!!
+            itemLiveData.value = itemLiveData.value!!.minus(quantityLiveData.value !!)
+
+        } else {
+            messageLiveData.value = "you don't have this thing"
         }
         moneyLiveData.value =
             moneyLiveData.value?.plus(currentPrice)
-
     }
+
 
     fun onClickMinus() {
         if (quantityLiveData.value!! > 1) {
@@ -199,13 +147,10 @@ class GameViewModel : ViewModel() {
         numberOfActionLiveData.value = numberOfActionLiveData.value?.minus(1)
     }
 
-
     enum class Thing {
         CAR,
         PLANE,
         SHIP,
         BIKE
     }
-
-
 }
