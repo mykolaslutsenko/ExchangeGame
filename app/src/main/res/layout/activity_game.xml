@@ -84,23 +84,23 @@
 
             <TextView
                 style="@style/text_with_icon"
-                android:text="@{vm.shipLiveData}"
+                android:text="@{vm.shipLiveData.toString()}"
                 app:drawableStartCompat="@drawable/ic_anchor" />
 
             <TextView
                 style="@style/text_with_icon"
-                android:text="@={vm.carLiveData}"
+                android:text="@{vm.carLiveData.toString()}"
                 app:drawableStartCompat="@drawable/ic_car" />
 
             <TextView
                 style="@style/text_with_icon"
-                android:text="@{vm.planeLiveData}"
+                android:text="@{vm.planeLiveData.toString()}"
                 app:drawableStartCompat="@drawable/ic_plane" />
 
 
             <TextView
                 style="@style/text_with_icon"
-                android:text="@{vm.bikeLiveData}"
+                android:text="@{vm.bikeLiveData.toString()}"
                 app:drawableStartCompat="@drawable/ic_bike" />
 
 
@@ -135,7 +135,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-
                     android:src="@drawable/ic_anchor" />
 
 
@@ -330,7 +329,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/offset_32"
-                android:text="@={vm.quantityLiveData}"
+                android:text="@{vm.quantityLiveData.toString()}"
                 android:textColor="@color/colorAccent"
                 android:textSize="32sp" />
 

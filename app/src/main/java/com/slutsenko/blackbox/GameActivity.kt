@@ -8,14 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.slutsenko.blackbox.databinding.ActivityGameBinding
-import java.text.DecimalFormat
 import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityGameBinding
     lateinit var viewModel: GameViewModel
-    var decimalFormat = DecimalFormat("#.#")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,22 +29,22 @@ class GameActivity : AppCompatActivity() {
         })
 
         viewModel.carBuyRateLiveData.observe(this, Observer {
-            viewModel.carSellRateLiveData.value =
-                decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
+            viewModel.carSellRateLiveData.value = it.times(Random.nextDouble(0.80, 1.19)).toInt()
+            //decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
         })
 
         viewModel.planeBuyRateLiveData.observe(this, Observer {
-            viewModel.planeSellRateLiveData.value =
-                decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
+            viewModel.planeSellRateLiveData.value = it.times(Random.nextDouble(0.80, 1.19)).toInt()
+                //decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
         })
         viewModel.bikeBuyRateLiveData.observe(this, Observer {
-            viewModel.bikeSellRateLiveData.value =
-                decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
+            viewModel.bikeSellRateLiveData.value = it.times(Random.nextDouble(0.80, 1.19)).toInt()
+                //decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
         })
 
         viewModel.shipBuyRateLiveData.observe(this, Observer {
-            viewModel.shipSellRateLiveData.value =
-                decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
+            viewModel.shipSellRateLiveData.value = it.times(Random.nextDouble(0.80, 1.19)).toInt()
+               // decimalFormat.format(it.times(Random.nextDouble(0.80, 1.19))).toDouble()
         })
 
         viewModel.moneyLiveData.observe(this, Observer {
